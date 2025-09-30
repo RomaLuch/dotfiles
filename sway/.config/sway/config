@@ -1,0 +1,89 @@
+
+### keybord settings
+input "type:keyboard" {
+	xkb_layout "us,ru"
+	xkb_variant ","
+	xkb_options "grp:alt_shift_toggle"
+}
+
+### Основные настройки
+set $mod Mod4
+set $term alacritty    # @@@ pacman -S alacritty
+set $browser firefox  # @@@ pacman -S firefox
+set $menu wofi --show drun  # @@@ pacman -S wofi
+
+### Запуск приложений
+bindsym $mod+Return exec $term
+bindsym $mod+b exec $browser
+bindsym $mod+d exec $menu
+
+### Управление окнами
+bindsym $mod+q kill
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exit
+
+### Фокус
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+### Перемещение окон
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Горячие клавиши для смены типа деления текущего контейнера
+bindsym $mod+Ctrl+v split v
+bindsym $mod+Ctrl+h split h
+
+# Навигация по дереву
+bindsym $mod+a focus parent        # подняться к родительскому контейнеру
+bindsym $mod+z focus child         # спуститься к дочернему контейнеру
+
+# Переключение layout контейнера
+bindsym $mod+space layout toggle splith splitv tabbed stacking
+
+### Рабочие пространства
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+
+### Обои (нужен swaybg)
+exec_always swaybg -i ~/Pictures/wallpaper.jpg -m fill
+# @@@ pacman -S swaybg
+
+### Блокировка экрана (нужен swaylock)
+bindsym $mod+Shift+x exec swaylock -c 000000
+# @@@ pacman -S swaylock
+
+### Автоблокировка и энергосбережение (нужен swayidle)
+exec swayidle -w \
+    timeout 300 'swaylock -f -c 000000' \
+    timeout 600 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"'
+# @@@ pacman -S swayidle
+
+### Панель задач (нужен waybar)
+exec waybar
+# @@@ pacman -S waybar
+
+### Поддержка X11-приложений (нужен xorg-xwayland)
+xwayland enable
+# @@@ pacman -S xorg-xwayland
+
