@@ -26,7 +26,6 @@ hyprland=(
     hyprpaper
     hyprlock
     hypridle
-    hyprpicker
     xdg-desktop-portal-hyprland
 )
 
