@@ -41,6 +41,7 @@ apps=(
 tools=(
     htop
     zsh
+    openssh
 )
 
 all_packages=("${general[@]}" "${hyprland[@]}" "${apps[@]}" "${tools[@]}")
