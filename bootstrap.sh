@@ -47,17 +47,16 @@ tools=(
 all_packages=("${general[@]}" "${hyprland[@]}" "${apps[@]}" "${tools[@]}")
 
 is_installed() {
-    pacman -Qs "$1" &> /dev/null || return 1
-    return 0
+    pacman -Qq "$1" &> /dev/null
 }
 
 install_packages() {
     for pkg in "$@"; do
-        if is_installed "$pkg"; then
-            echo ":: $pkg уже установлен"
-        else
+        if ! is_installed "$pkg"; then
             echo ":: Устанавливаем $pkg ..."
             sudo pacman -S --needed --noconfirm "$pkg"
+        else
+            echo ":: $pkg уже установлен"
         fi
     done
 }
