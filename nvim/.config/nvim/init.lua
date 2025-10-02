@@ -21,5 +21,7 @@ vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {
 require('lualine').setup()
 
 require('configs.jdtls')
+require('configs.lua_lsp')
+
 require('configs.cmp')
 require("configs.luasnip")
