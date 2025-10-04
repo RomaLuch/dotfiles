@@ -1,6 +1,6 @@
 // https://github.com/Alexays/Waybar/wiki/Configuration
 {
-    "spacing": 1, // Gaps between modules (4px)
+    "spacing": 6, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",

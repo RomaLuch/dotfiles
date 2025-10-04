@@ -1,9 +1,6 @@
--- Lua
-local lspconfig = require('lspconfig')
-
--- Проверяем, установлен ли lua_ls
+-- Проверяем, установлен ли lua-language-server
 if vim.fn.executable('lua-language-server') == 1 then
-  lspconfig.lua_ls.setup {
+  vim.lsp.config["lua_ls"] = {
     settings = {
       Lua = {
         runtime = { version = 'LuaJIT' },
@@ -26,6 +23,9 @@ if vim.fn.executable('lua-language-server') == 1 then
       vim.bo[bufnr].shiftwidth = 2
       vim.bo[bufnr].tabstop = 2
       vim.bo[bufnr].softtabstop = 2
-    end
+    end,
   }
+
+  -- включаем сервер
+  vim.lsp.enable("lua_ls")
 end
