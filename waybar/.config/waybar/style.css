@@ -32,8 +32,9 @@ tooltip label {
     border-bottom: 3px solid white;
 }
 
-#mode, #clock, #battery {
-    padding: 0 10px;
+/* добавим отступы для всех модулей */
+#mode, #clock, #battery, #pulseaudio, #network, #mpris, #tray, #idle_inhibitor, #language {
+    padding: 0 8px;
 }
 
 #mode {
@@ -71,3 +72,4 @@ tooltip label {
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
+
