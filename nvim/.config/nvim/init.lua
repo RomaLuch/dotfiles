@@ -25,3 +25,4 @@ require('configs.lua_lsp')
 
 require('configs.cmp')
 require("configs.luasnip")
+require("configs.gopls")
