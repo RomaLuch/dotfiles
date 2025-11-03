@@ -13,6 +13,7 @@ function M.on_attach(client, bufnr)
   -- LSP
   vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, opts)
   vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', '<Leader>d', vim.diagnostic.open_float, opts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
