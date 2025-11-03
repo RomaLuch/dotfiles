@@ -1,19 +1,23 @@
 -- ~/.config/nvim/lua/configs/gopls.lua
 
-local lspconfig = require("lspconfig")
-local lsp_common = require("configs.lsp-common")  -- подключаем общий on_attach
+local lsp_common = require("configs.lsp-common")
 
--- Настройка gopls
-lspconfig.gopls.setup({
-  cmd = {"gopls"},
-  filetypes = {"go", "gomod"},
-  root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
-  settings = {
-    gopls = {
-      gofumpt = true,      -- автоформатирование
-      staticcheck = true,  -- линтер
-    },
-  },
-  on_attach = lsp_common.on_attach,  -- используем общий on_attach
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "go", "gomod" },
+  callback = function()
+    vim.lsp.start({
+      name = "gopls",
+      cmd = { "gopls" },
+      root_dir = vim.fs.root(0, { "go.work", "go.mod", ".git" }),
+      filetypes = { "go", "gomod" },
+      settings = {
+        gopls = {
+          gofumpt = true,
+          staticcheck = true,
+        },
+      },
+      on_attach = lsp_common.on_attach,
+    })
+  end,
 })
 
