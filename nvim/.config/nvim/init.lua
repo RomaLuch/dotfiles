@@ -14,7 +14,12 @@ require('nvim-web-devicons').setup {
     default = true; -- Включить иконки по умолчанию
 }
 
-require("nvim-tree").setup()
+require("nvim-tree").setup({
+  git = {
+    ignore = false, -- не скрывать файлы из .gitignore
+  },
+})
+
 
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {
   noremap = true,
@@ -34,3 +39,6 @@ require('configs.lua_lsp')
 require('configs.cmp')
 require("configs.luasnip")
 require("configs.gopls")
+
+-- Настройка Telescope
+require("configs.telescope")
