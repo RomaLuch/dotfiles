@@ -33,7 +33,7 @@ vim.api.nvim_set_keymap('n', '<C-e>', ':NvimTreeFocus<CR>', {
 
 require('lualine').setup()
 
-require('configs.jdtls')
+require('configs.nvim-jdtls')
 require('configs.lua_lsp')
 
 require('configs.cmp')
