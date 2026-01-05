@@ -14,11 +14,8 @@ require('nvim-web-devicons').setup {
     default = true; -- Включить иконки по умолчанию
 }
 
-require("nvim-tree").setup({
-  git = {
-    ignore = false, -- не скрывать файлы из .gitignore
-  },
-})
+
+require('configs.nvim-tree')
 
 
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {
