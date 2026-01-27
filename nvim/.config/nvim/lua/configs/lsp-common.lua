@@ -22,6 +22,14 @@ function M.on_attach(client, bufnr)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
   vim.keymap.set('n', '<Leader>f', function() vim.lsp.buf.format({ async = true }) end, opts)
-end
+-- Переход к следующей диагностике
+  vim.keymap.set('n', ']d', function()
+    vim.diagnostic.jump({ count = 1, float = true })
+  end, opts)
+
+  -- Переход к предыдущей диагностике
+  vim.keymap.set('n', '[d', function()
+    vim.diagnostic.jump({ count = -1, float = true })
+  end, opts)end
 
 return M

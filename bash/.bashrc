@@ -5,5 +5,8 @@ export JDTLS_HOME=~/opt/jdtls/
 
 export PATH=$PATH:$HOME/go/bin
 
-alias hypr=hyprland
+alias hypr=start-hyprland
 
+
+# opencode
+export PATH=/home/roma/.opencode/bin:$PATH
