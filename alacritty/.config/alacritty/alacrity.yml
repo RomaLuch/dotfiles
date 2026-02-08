@@ -5,4 +5,23 @@ font:
   bold:
     family: "JetBrainsMono Nerd Font"
     style: Bold
-  size: 12.0
+  italic:
+    family: "JetBrainsMono Nerd Font"
+    style: Italic
+  bold_italic:
+    family: "JetBrainsMono Nerd Font"
+    style: Bold Italic
+  size: 14.0
+  # Improved font rendering for Wayland
+  glyph_offset:
+    x: 0
+    y: 0
+  use_thin_strokes: true
+  builtin_box_drawing: true
+
+# Better rendering configuration
+rendering:
+  renderer: "glsl"
+  performance:
+    # Reduce tearing and improve smoothness
+    vsync: true
