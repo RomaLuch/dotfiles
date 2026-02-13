@@ -5,9 +5,25 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local mapLeader = " "
 
-require('onedark').setup {
-    style = 'darker'
-}
+-- 1. Подключаем плагин (так как он в pack)
+vim.cmd('packadd nvim-treesitter')
+
+-- 2. Настраиваем (используем config БЕЗ s)
+local ok, ts = pcall(require, "nvim-treesitter.config")
+if ok then
+    ts.setup({
+        highlight = { enable = true },
+    })
+end
+
+-- 3. Тот самый "двигатель", который включает подсветку
+-- Это лаконичная версия твоей автокоманды
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "go", "gomod", "gowork", "gosum" },
+    callback = function() vim.treesitter.start() end,
+})
+
+require('onedark').setup { style = 'darker' }
 require('onedark').load()
 
 require('nvim-web-devicons').setup {
@@ -39,3 +55,4 @@ require("configs.gopls")
 
 -- Настройка Telescope
 require("configs.telescope")
+
